@@ -1,0 +1,134 @@
+.country-card {
+  position: relative;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  animation: fadeUp 0.35s ease both;
+}
+
+.country-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--amber);
+}
+
+.country-card--wishlist {
+  border-color: rgba(201, 64, 64, 0.3);
+}
+
+.country-card--visited {
+  border-color: rgba(45, 80, 22, 0.3);
+}
+
+/* Stamp */
+.card-stamp {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  padding: 2px 8px;
+  border-radius: 100px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  animation: stampIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.card-stamp--wishlist {
+  background: rgba(201, 64, 64, 0.12);
+  color: var(--rose);
+  border: 1px solid rgba(201, 64, 64, 0.25);
+}
+
+.card-stamp--visited {
+  background: rgba(45, 80, 22, 0.1);
+  color: var(--forest);
+  border: 1px solid rgba(45, 80, 22, 0.2);
+}
+
+/* Flag */
+.card-flag {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--sand);
+}
+
+.card-flag img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.country-card:hover .card-flag img {
+  transform: scale(1.05);
+}
+
+/* Body */
+.card-body {
+  padding: 14px 16px 10px;
+}
+
+.card-region {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 2px;
+}
+
+.card-name {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.2;
+  margin-bottom: 6px;
+}
+
+.card-meta {
+  display: flex;
+  gap: 12px;
+  font-size: 12px;
+  color: var(--mist);
+}
+
+/* Actions */
+.card-actions {
+  display: flex;
+  gap: 8px;
+  padding: 8px 16px 14px;
+}
+
+.action-btn {
+  flex: 1;
+  padding: 6px;
+  border: 1.5px solid var(--border);
+  background: transparent;
+  border-radius: var(--radius);
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: var(--mist);
+}
+
+.action-btn:hover {
+  border-color: var(--amber);
+  background: var(--sand);
+  color: var(--ink);
+}
+
+.action-btn--active-wish {
+  border-color: rgba(201, 64, 64, 0.4);
+  background: rgba(201, 64, 64, 0.06);
+  color: var(--rose);
+}
+
+.action-btn--active-visited {
+  border-color: rgba(45, 80, 22, 0.4);
+  background: rgba(45, 80, 22, 0.06);
+  color: var(--forest);
+}

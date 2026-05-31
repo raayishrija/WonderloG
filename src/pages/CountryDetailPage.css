@@ -1,0 +1,231 @@
+.detail-loading,
+.detail-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 60px);
+  text-align: center;
+  gap: 12px;
+}
+.detail-error h2 {
+  font-family: var(--font-display);
+  font-size: 24px;
+}
+
+.detail-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 32px 60px;
+}
+
+.detail-topbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.back-btn { color: var(--mist); }
+.detail-breadcrumb { letter-spacing: 0.02em; }
+
+/* Layout */
+.detail-layout {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 36px;
+  align-items: start;
+}
+
+/* Left */
+.flag-hero {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  background: var(--sand);
+  margin-bottom: 20px;
+  animation: fadeIn 0.4s ease;
+}
+.flag-hero img {
+  width: 100%;
+  display: block;
+}
+
+/* Actions card */
+.detail-actions-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.detail-status {
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+}
+.detail-status--wishlist {
+  background: rgba(201,64,64,0.08);
+  color: var(--rose);
+}
+.detail-status--visited {
+  background: rgba(45,80,22,0.08);
+  color: var(--forest);
+}
+
+.detail-actions {
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-action-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 16px;
+  background: transparent;
+  border: none;
+  border-top: 1px solid var(--border);
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+  transition: background 0.15s;
+  text-align: left;
+}
+.detail-action-btn:hover { background: var(--sand); }
+
+.detail-action-btn.active-wish {
+  color: var(--rose);
+  background: rgba(201,64,64,0.04);
+}
+.detail-action-btn.active-visited {
+  color: var(--forest);
+  background: rgba(45,80,22,0.04);
+}
+
+.action-icon { font-size: 18px; width: 24px; text-align: center; }
+
+/* Quick stats */
+.quick-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.quick-stat {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px;
+}
+.qs-label {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 4px;
+}
+.qs-value {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Right */
+.detail-region-tag {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.detail-name {
+  font-family: var(--font-display);
+  font-size: 44px;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 6px;
+  color: var(--ink);
+}
+
+.detail-official {
+  margin-bottom: 28px;
+  font-style: italic;
+}
+
+/* Info grid */
+.detail-info-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.info-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.15s;
+}
+.info-row:last-child { border-bottom: none; }
+.info-row:hover { background: var(--sand); }
+
+.info-icon {
+  font-size: 20px;
+  width: 28px;
+  flex-shrink: 0;
+  text-align: center;
+}
+.info-label {
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: 2px;
+}
+.info-value { font-weight: 500; }
+
+/* Borders */
+.borders-section,
+.coords-section {
+  margin-bottom: 24px;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.borders-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.border-chip {
+  padding: 5px 14px;
+  background: var(--card-bg);
+  border: 1.5px solid var(--border);
+  border-radius: 100px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: var(--ocean);
+}
+.border-chip:hover {
+  border-color: var(--amber);
+  color: var(--amber-dark);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .detail-page { padding: 16px 16px 48px; }
+  .detail-layout { grid-template-columns: 1fr; gap: 20px; }
+  .detail-name { font-size: 32px; }
+}
