@@ -2,6 +2,8 @@ import React, { createContext, useContext, useState, useEffect } from 'react'
 
 const AuthContext = createContext(null)
 
+const REQRES_API_KEY = 'free_user_3EV5Bzb4gVGV4Z8J9hmOxDzJpyR'
+
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(() => {
     const stored = localStorage.getItem('wl_user')
@@ -14,7 +16,10 @@ export function AuthProvider({ children }) {
     try {
       const res = await fetch('https://reqres.in/api/login', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'x-api-key': REQRES_API_KEY   // ← added
+        },
         body: JSON.stringify({ email, password }),
       })
       const data = await res.json()
@@ -35,7 +40,10 @@ export function AuthProvider({ children }) {
     try {
       const res = await fetch('https://reqres.in/api/register', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'x-api-key': REQRES_API_KEY   // ← added
+        },
         body: JSON.stringify({ email, password }),
       })
       const data = await res.json()
