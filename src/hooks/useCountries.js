@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react'
 
-const FIELDS = 'name,flags,cca3,region,subregion,population,area,capital,currencies,languages,borders,tld,latlng'
-
 export function useCountries() {
   const [countries, setCountries] = useState([])
   const [loading, setLoading]     = useState(true)
@@ -10,7 +8,7 @@ export function useCountries() {
   useEffect(() => {
     let cancelled = false
     setLoading(true)
-    fetch(`https://restcountries.com/v3.1/all?fields=${FIELDS}`)
+    fetch('https://restcountries.com/v3.1/all')
       .then(res => {
         if (!res.ok) throw new Error(`API error ${res.status}`)
         return res.json()
@@ -39,7 +37,7 @@ export function useCountryDetail(code) {
     if (!code) return
     let cancelled = false
     setLoading(true)
-    fetch(`https://restcountries.com/v3.1/alpha/${code}?fields=${FIELDS}`)
+    fetch(`https://restcountries.com/v3.1/alpha/${code}`)
       .then(res => {
         if (!res.ok) throw new Error(`Country not found`)
         return res.json()
