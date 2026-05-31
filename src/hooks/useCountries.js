@@ -8,14 +8,24 @@ export function useCountries() {
   useEffect(() => {
     let cancelled = false
     setLoading(true)
-    fetch('https://restcountries.com/v3.1/all')
+    fetch('https://countriesnow.space/api/v0.1/countries/info?returns=name,flag,capital,region,population,area,iso3')
       .then(res => {
         if (!res.ok) throw new Error(`API error ${res.status}`)
         return res.json()
       })
-      .then(data => {
+      .then(json => {
         if (!cancelled) {
-          setCountries(data.sort((a, b) => a.name.common.localeCompare(b.name.common)))
+          // Map new API format to match your existing component format
+          const data = json.data.map(c => ({
+            cca3: c.iso3,
+            name: { common: c.name },
+            flags: { svg: c.flag, png: c.flag },
+            region: c.region || '—',
+            population: c.population || 0,
+            capital: c.capital ? [c.capital] : [],
+            area: c.area || 0,
+          })).sort((a, b) => a.name.common.localeCompare(b.name.common))
+          setCountries(data)
           setLoading(false)
         }
       })
@@ -37,13 +47,22 @@ export function useCountryDetail(code) {
     if (!code) return
     let cancelled = false
     setLoading(true)
-    fetch(`https://restcountries.com/v3.1/alpha/${code}`)
-      .then(res => {
-        if (!res.ok) throw new Error(`Country not found`)
-        return res.json()
-      })
-      .then(data => {
-        if (!cancelled) { setCountry(data); setLoading(false) }
+    fetch('https://countriesnow.space/api/v0.1/countries/info?returns=name,flag,capital,region,population,area,iso3')
+      .then(res => res.json())
+      .then(json => {
+        const found = json.data.find(c => c.iso3 === code)
+        if (!found) throw new Error('Country not found')
+        // Map to match your existing format
+        const mapped = {
+          cca3: found.iso3,
+          name: { common: found.name },
+          flags: { svg: found.flag, png: found.flag },
+          region: found.region || '—',
+          population: found.population || 0,
+          capital: found.capital ? [found.capital] : [],
+          area: found.area || 0,
+        }
+        if (!cancelled) { setCountry(mapped); setLoading(false) }
       })
       .catch(err => {
         if (!cancelled) { setError(err.message); setLoading(false) }
