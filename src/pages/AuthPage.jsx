@@ -30,7 +30,7 @@ export default function AuthPage() {
 
   const fillTestCreds = () => {
     setEmail('eve.holt@reqres.in')
-    setPassword('cityslicka')
+    setPassword('Shrija')
     setError('')
   }
 
@@ -126,7 +126,7 @@ export default function AuthPage() {
           <div className="auth-hint">
             <p className="text-sm text-muted">For demo, use the test credentials:</p>
             <button className="hint-btn" onClick={fillTestCreds}>
-              Use <code>eve.holt@reqres.in</code> / any password
+              Use <code>eve.holt@reqres.in</code> / Shrija
             </button>
             <p className="text-xs text-muted" style={{marginTop:6}}>
               Note: Reqres.in only accepts certain test emails for success responses.
